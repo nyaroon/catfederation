@@ -181,7 +181,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                             ),
                           );
                         },
-                        text: 'Add a Dog',
+                        text: 'Add a Cat',
                         options: FFButtonOptions(
                           width: 130,
                           height: 40,
