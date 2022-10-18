@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "417213556494",
+    "project_id": "catziel",
+    "storage_bucket": "catziel.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:417213556494:android:b3097dc44a8d756c86195f",
+        "android_client_info": {
+          "package_name": "com.catziel.id"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "417213556494-aqfopr93cnpel2l9roa7qbr8it17c4vm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.catziel.id",
+            "certificate_hash": "9bbb3186b2189ef16d8f272bdab59362c395cbb4"
+          }
+        },
+        {
+          "client_id": "417213556494-12tad3fg2e3u7rfr9ppdr4h92jnsohiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCmAwDcJQDI9r5K7zuvzP8hQS8CZidUWmE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "417213556494-12tad3fg2e3u7rfr9ppdr4h92jnsohiq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "417213556494-sm4ln4b2s98r8asa39847e8276noq2bv.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.catziel.id"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
