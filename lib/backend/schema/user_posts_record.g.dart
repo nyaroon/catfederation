@@ -73,20 +73,20 @@ class _$UserPostsRecordSerializer
         ..add('numComments')
         ..add(serializers.serialize(value, specifiedType: const FullType(int)));
     }
-    value = object.dogProfile;
-    if (value != null) {
-      result
-        ..add('dogProfile')
-        ..add(serializers.serialize(value,
-            specifiedType: const FullType(
-                DocumentReference, const [const FullType.nullable(Object)])));
-    }
     value = object.postOwner;
     if (value != null) {
       result
         ..add('postOwner')
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
+    }
+    value = object.catProfile;
+    if (value != null) {
+      result
+        ..add('catProfile')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
     }
     value = object.ffRef;
     if (value != null) {
@@ -144,15 +144,15 @@ class _$UserPostsRecordSerializer
           result.numComments = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int?;
           break;
-        case 'dogProfile':
-          result.dogProfile = serializers.deserialize(value,
-              specifiedType: const FullType(DocumentReference, const [
-                const FullType.nullable(Object)
-              ])) as DocumentReference<Object?>?;
-          break;
         case 'postOwner':
           result.postOwner = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
+          break;
+        case 'catProfile':
+          result.catProfile = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
           break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
@@ -183,9 +183,9 @@ class _$UserPostsRecord extends UserPostsRecord {
   @override
   final int? numComments;
   @override
-  final DocumentReference<Object?>? dogProfile;
-  @override
   final bool? postOwner;
+  @override
+  final DocumentReference<Object?>? catProfile;
   @override
   final DocumentReference<Object?>? ffRef;
 
@@ -200,8 +200,8 @@ class _$UserPostsRecord extends UserPostsRecord {
       this.timePosted,
       this.likes,
       this.numComments,
-      this.dogProfile,
       this.postOwner,
+      this.catProfile,
       this.ffRef})
       : super._();
 
@@ -224,8 +224,8 @@ class _$UserPostsRecord extends UserPostsRecord {
         timePosted == other.timePosted &&
         likes == other.likes &&
         numComments == other.numComments &&
-        dogProfile == other.dogProfile &&
         postOwner == other.postOwner &&
+        catProfile == other.catProfile &&
         ffRef == other.ffRef;
   }
 
@@ -246,8 +246,8 @@ class _$UserPostsRecord extends UserPostsRecord {
                             timePosted.hashCode),
                         likes.hashCode),
                     numComments.hashCode),
-                dogProfile.hashCode),
-            postOwner.hashCode),
+                postOwner.hashCode),
+            catProfile.hashCode),
         ffRef.hashCode));
   }
 
@@ -261,8 +261,8 @@ class _$UserPostsRecord extends UserPostsRecord {
           ..add('timePosted', timePosted)
           ..add('likes', likes)
           ..add('numComments', numComments)
-          ..add('dogProfile', dogProfile)
           ..add('postOwner', postOwner)
+          ..add('catProfile', catProfile)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -304,14 +304,14 @@ class UserPostsRecordBuilder
   int? get numComments => _$this._numComments;
   set numComments(int? numComments) => _$this._numComments = numComments;
 
-  DocumentReference<Object?>? _dogProfile;
-  DocumentReference<Object?>? get dogProfile => _$this._dogProfile;
-  set dogProfile(DocumentReference<Object?>? dogProfile) =>
-      _$this._dogProfile = dogProfile;
-
   bool? _postOwner;
   bool? get postOwner => _$this._postOwner;
   set postOwner(bool? postOwner) => _$this._postOwner = postOwner;
+
+  DocumentReference<Object?>? _catProfile;
+  DocumentReference<Object?>? get catProfile => _$this._catProfile;
+  set catProfile(DocumentReference<Object?>? catProfile) =>
+      _$this._catProfile = catProfile;
 
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
@@ -331,8 +331,8 @@ class UserPostsRecordBuilder
       _timePosted = $v.timePosted;
       _likes = $v.likes?.toBuilder();
       _numComments = $v.numComments;
-      _dogProfile = $v.dogProfile;
       _postOwner = $v.postOwner;
+      _catProfile = $v.catProfile;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -365,8 +365,8 @@ class UserPostsRecordBuilder
               timePosted: timePosted,
               likes: _likes?.build(),
               numComments: numComments,
-              dogProfile: dogProfile,
               postOwner: postOwner,
+              catProfile: catProfile,
               ffRef: ffRef);
     } catch (_) {
       late String _$failedField;

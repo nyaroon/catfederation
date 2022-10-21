@@ -22,24 +22,24 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
   bool isMediaUploading = false;
   String uploadedFileUrl = '';
 
-  TextEditingController? dogNameController;
-  TextEditingController? dogBreedController;
-  TextEditingController? dogAgeController;
+  TextEditingController? catNameController;
+  TextEditingController? catBreedController;
+  TextEditingController? catAgeController;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    dogAgeController = TextEditingController();
-    dogBreedController = TextEditingController();
-    dogNameController = TextEditingController();
+    catAgeController = TextEditingController();
+    catBreedController = TextEditingController();
+    catNameController = TextEditingController();
   }
 
   @override
   void dispose() {
-    dogAgeController?.dispose();
-    dogBreedController?.dispose();
-    dogNameController?.dispose();
+    catAgeController?.dispose();
+    catBreedController?.dispose();
+    catNameController?.dispose();
     super.dispose();
   }
 
@@ -104,7 +104,7 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
                     image: DecorationImage(
                       fit: BoxFit.cover,
                       image: Image.asset(
-                        'assets/images/dog_emptyChoosePhoto@2x.png',
+                        'assets/images/upload_photo.png',
                       ).image,
                     ),
                     borderRadius: BorderRadius.circular(8),
@@ -170,7 +170,7 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: TextFormField(
-                            controller: dogNameController,
+                            controller: catNameController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Cat Name',
@@ -233,7 +233,7 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: TextFormField(
-                            controller: dogBreedController,
+                            controller: catBreedController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Cat Breed',
@@ -296,7 +296,7 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                           child: TextFormField(
-                            controller: dogAgeController,
+                            controller: catAgeController,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelText: 'Cat Age',
@@ -362,14 +362,14 @@ class _CreateCatProfileNewWidgetState extends State<CreateCatProfileNewWidget> {
                     padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 40),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        final dogsCreateData = createDogsRecordData(
+                        final catsCreateData = createCatsRecordData(
                           userAssociation: currentUserReference,
-                          dogPhoto: uploadedFileUrl,
-                          dogName: dogNameController!.text,
-                          dogType: dogBreedController!.text,
-                          dogAge: dogAgeController!.text,
+                          catPhoto: uploadedFileUrl,
+                          catName: catNameController!.text,
+                          catType: catBreedController!.text,
+                          catAge: int.parse(catAgeController!.text),
                         );
-                        await DogsRecord.collection.doc().set(dogsCreateData);
+                        await CatsRecord.collection.doc().set(catsCreateData);
                         Navigator.pop(context);
                       },
                       text: 'Add Kitty',

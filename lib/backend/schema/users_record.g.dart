@@ -82,6 +82,14 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
         ..add(
             serializers.serialize(value, specifiedType: const FullType(bool)));
     }
+    value = object.cat;
+    if (value != null) {
+      result
+        ..add('cat')
+        ..add(serializers.serialize(value,
+            specifiedType: const FullType(
+                DocumentReference, const [const FullType.nullable(Object)])));
+    }
     value = object.ffRef;
     if (value != null) {
       result
@@ -140,6 +148,12 @@ class _$UsersRecordSerializer implements StructuredSerializer<UsersRecord> {
           result.isFollowed = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool?;
           break;
+        case 'cat':
+          result.cat = serializers.deserialize(value,
+              specifiedType: const FullType(DocumentReference, const [
+                const FullType.nullable(Object)
+              ])) as DocumentReference<Object?>?;
+          break;
         case 'Document__Reference__Field':
           result.ffRef = serializers.deserialize(value,
               specifiedType: const FullType(DocumentReference, const [
@@ -173,6 +187,8 @@ class _$UsersRecord extends UsersRecord {
   @override
   final bool? isFollowed;
   @override
+  final DocumentReference<Object?>? cat;
+  @override
   final DocumentReference<Object?>? ffRef;
 
   factory _$UsersRecord([void Function(UsersRecordBuilder)? updates]) =>
@@ -188,6 +204,7 @@ class _$UsersRecord extends UsersRecord {
       this.userName,
       this.bio,
       this.isFollowed,
+      this.cat,
       this.ffRef})
       : super._();
 
@@ -211,6 +228,7 @@ class _$UsersRecord extends UsersRecord {
         userName == other.userName &&
         bio == other.bio &&
         isFollowed == other.isFollowed &&
+        cat == other.cat &&
         ffRef == other.ffRef;
   }
 
@@ -224,15 +242,17 @@ class _$UsersRecord extends UsersRecord {
                         $jc(
                             $jc(
                                 $jc(
-                                    $jc($jc(0, displayName.hashCode),
-                                        email.hashCode),
-                                    photoUrl.hashCode),
-                                uid.hashCode),
-                            createdTime.hashCode),
-                        phoneNumber.hashCode),
-                    userName.hashCode),
-                bio.hashCode),
-            isFollowed.hashCode),
+                                    $jc(
+                                        $jc($jc(0, displayName.hashCode),
+                                            email.hashCode),
+                                        photoUrl.hashCode),
+                                    uid.hashCode),
+                                createdTime.hashCode),
+                            phoneNumber.hashCode),
+                        userName.hashCode),
+                    bio.hashCode),
+                isFollowed.hashCode),
+            cat.hashCode),
         ffRef.hashCode));
   }
 
@@ -248,6 +268,7 @@ class _$UsersRecord extends UsersRecord {
           ..add('userName', userName)
           ..add('bio', bio)
           ..add('isFollowed', isFollowed)
+          ..add('cat', cat)
           ..add('ffRef', ffRef))
         .toString();
   }
@@ -292,6 +313,10 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
   bool? get isFollowed => _$this._isFollowed;
   set isFollowed(bool? isFollowed) => _$this._isFollowed = isFollowed;
 
+  DocumentReference<Object?>? _cat;
+  DocumentReference<Object?>? get cat => _$this._cat;
+  set cat(DocumentReference<Object?>? cat) => _$this._cat = cat;
+
   DocumentReference<Object?>? _ffRef;
   DocumentReference<Object?>? get ffRef => _$this._ffRef;
   set ffRef(DocumentReference<Object?>? ffRef) => _$this._ffRef = ffRef;
@@ -312,6 +337,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
       _userName = $v.userName;
       _bio = $v.bio;
       _isFollowed = $v.isFollowed;
+      _cat = $v.cat;
       _ffRef = $v.ffRef;
       _$v = null;
     }
@@ -344,6 +370,7 @@ class UsersRecordBuilder implements Builder<UsersRecord, UsersRecordBuilder> {
             userName: userName,
             bio: bio,
             isFollowed: isFollowed,
+            cat: cat,
             ffRef: ffRef);
     replace(_$result);
     return _$result;

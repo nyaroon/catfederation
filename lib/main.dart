@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
     userStream = catizielFirebaseUserStream()
       ..listen((user) => initialUser ?? setState(() => initialUser = user));
+    jwtTokenStream.listen((_) {});
     Future.delayed(
       Duration(seconds: 1),
       () => setState(() => displaySplashImage = false),
@@ -126,8 +127,9 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'homePage': HomePageWidget(),
-      'allChatsPage': AllChatsPageWidget(),
       'profilePage': ProfilePageWidget(),
+      'allChatsPage': AllChatsPageWidget(),
+      'home': HomeWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
     return Scaffold(
@@ -155,6 +157,18 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
+              Icons.account_circle_outlined,
+              size: 24,
+            ),
+            activeIcon: Icon(
+              Icons.account_circle,
+              size: 24,
+            ),
+            label: 'Profile',
+            tooltip: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(
               Icons.chat_bubble_outline,
               size: 24,
             ),
@@ -167,14 +181,10 @@ class _NavBarPageState extends State<NavBarPage> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.account_circle_outlined,
+              Icons.map_rounded,
               size: 24,
             ),
-            activeIcon: Icon(
-              Icons.account_circle,
-              size: 24,
-            ),
-            label: 'Profile',
+            label: '',
             tooltip: '',
           )
         ],

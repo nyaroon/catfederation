@@ -9,7 +9,6 @@ import 'schema/users_record.dart';
 import 'schema/post_comments_record.dart';
 import 'schema/user_stories_record.dart';
 import 'schema/story_comments_record.dart';
-import 'schema/dogs_record.dart';
 import 'schema/friends_record.dart';
 import 'schema/chats_record.dart';
 import 'schema/chat_messages_record.dart';
@@ -26,7 +25,6 @@ export 'schema/users_record.dart';
 export 'schema/post_comments_record.dart';
 export 'schema/user_stories_record.dart';
 export 'schema/story_comments_record.dart';
-export 'schema/dogs_record.dart';
 export 'schema/friends_record.dart';
 export 'schema/chats_record.dart';
 export 'schema/chat_messages_record.dart';
@@ -236,48 +234,6 @@ Future<FFFirestorePage<StoryCommentsRecord>> queryStoryCommentsRecordPage({
     queryCollectionPage(
       StoryCommentsRecord.collection,
       StoryCommentsRecord.serializer,
-      queryBuilder: queryBuilder,
-      nextPageMarker: nextPageMarker,
-      pageSize: pageSize,
-      isStream: isStream,
-    );
-
-/// Functions to query DogsRecords (as a Stream and as a Future).
-Stream<List<DogsRecord>> queryDogsRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      DogsRecord.collection,
-      DogsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<List<DogsRecord>> queryDogsRecordOnce({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollectionOnce(
-      DogsRecord.collection,
-      DogsRecord.serializer,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
-
-Future<FFFirestorePage<DogsRecord>> queryDogsRecordPage({
-  Query Function(Query)? queryBuilder,
-  DocumentSnapshot? nextPageMarker,
-  required int pageSize,
-  required bool isStream,
-}) =>
-    queryCollectionPage(
-      DogsRecord.collection,
-      DogsRecord.serializer,
       queryBuilder: queryBuilder,
       nextPageMarker: nextPageMarker,
       pageSize: pageSize,

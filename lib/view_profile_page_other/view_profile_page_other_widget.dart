@@ -258,10 +258,10 @@ class _ViewProfilePageOtherWidgetState
                                   color: FlutterFlowTheme.of(context)
                                       .primaryBackground,
                                 ),
-                                child: StreamBuilder<List<DogsRecord>>(
-                                  stream: queryDogsRecord(
-                                    queryBuilder: (dogsRecord) =>
-                                        dogsRecord.where('userAssociation',
+                                child: StreamBuilder<List<CatsRecord>>(
+                                  stream: queryCatsRecord(
+                                    queryBuilder: (catsRecord) =>
+                                        catsRecord.where('userAssociation',
                                             isEqualTo:
                                                 viewProfilePageOtherUsersRecord
                                                     .reference),
@@ -280,15 +280,15 @@ class _ViewProfilePageOtherWidgetState
                                         ),
                                       );
                                     }
-                                    List<DogsRecord> columnDogsRecordList =
+                                    List<CatsRecord> columnCatsRecordList =
                                         snapshot.data!;
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: List.generate(
-                                          columnDogsRecordList.length,
+                                          columnCatsRecordList.length,
                                           (columnIndex) {
-                                        final columnDogsRecord =
-                                            columnDogsRecordList[columnIndex];
+                                        final columnCatsRecord =
+                                            columnCatsRecordList[columnIndex];
                                         return Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
@@ -325,10 +325,7 @@ class _ViewProfilePageOtherWidgetState
                                                         Radius.circular(0),
                                                   ),
                                                   child: Image.network(
-                                                    valueOrDefault<String>(
-                                                      columnDogsRecord.dogPhoto,
-                                                      'https://storage.googleapis.com/flutterflow-io-6f20.appspot.com/projects/doggiesocial-mhunoo/assets/zyr06zmrd5ma/Cat_Profile.jpg',
-                                                    ),
+                                                    columnCatsRecord.catPhoto!,
                                                     width: 100,
                                                     height: 100,
                                                     fit: BoxFit.cover,
@@ -348,8 +345,8 @@ class _ViewProfilePageOtherWidgetState
                                                             .start,
                                                     children: [
                                                       Text(
-                                                        columnDogsRecord
-                                                            .dogName!,
+                                                        columnCatsRecord
+                                                            .catName!,
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
@@ -373,8 +370,8 @@ class _ViewProfilePageOtherWidgetState
                                                                           0,
                                                                           0),
                                                               child: Text(
-                                                                columnDogsRecord
-                                                                    .dogType!,
+                                                                columnCatsRecord
+                                                                    .catType!,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText2,
@@ -389,8 +386,9 @@ class _ViewProfilePageOtherWidgetState
                                                                           0,
                                                                           0),
                                                               child: Text(
-                                                                columnDogsRecord
-                                                                    .dogAge!,
+                                                                columnCatsRecord
+                                                                    .catAge!
+                                                                    .toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyText2,

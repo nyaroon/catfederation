@@ -25,9 +25,9 @@ abstract class UserPostsRecord
 
   int? get numComments;
 
-  DocumentReference? get dogProfile;
-
   bool? get postOwner;
+
+  DocumentReference? get catProfile;
 
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
@@ -69,8 +69,8 @@ Map<String, dynamic> createUserPostsRecordData({
   DocumentReference? postUser,
   DateTime? timePosted,
   int? numComments,
-  DocumentReference? dogProfile,
   bool? postOwner,
+  DocumentReference? catProfile,
 }) {
   final firestoreData = serializers.toFirestore(
     UserPostsRecord.serializer,
@@ -83,8 +83,8 @@ Map<String, dynamic> createUserPostsRecordData({
         ..timePosted = timePosted
         ..likes = null
         ..numComments = numComments
-        ..dogProfile = dogProfile
-        ..postOwner = postOwner,
+        ..postOwner = postOwner
+        ..catProfile = catProfile,
     ),
   );
 

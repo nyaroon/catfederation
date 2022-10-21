@@ -27,3 +27,4 @@ export 'all_chats_page/all_chats_page_widget.dart' show AllChatsPageWidget;
 export 'add_chat_users/add_chat_users_widget.dart' show AddChatUsersWidget;
 export 'create_group_chat/create_group_chat_widget.dart'
     show CreateGroupChatWidget;
+export 'home/home_widget.dart' show HomeWidget;

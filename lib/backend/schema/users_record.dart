@@ -31,6 +31,8 @@ abstract class UsersRecord implements Built<UsersRecord, UsersRecordBuilder> {
 
   bool? get isFollowed;
 
+  DocumentReference? get cat;
+
   @BuiltValueField(wireName: kDocumentReferenceField)
   DocumentReference? get ffRef;
   DocumentReference get reference => ffRef!;
@@ -76,6 +78,7 @@ Map<String, dynamic> createUsersRecordData({
   String? userName,
   String? bio,
   bool? isFollowed,
+  DocumentReference? cat,
 }) {
   final firestoreData = serializers.toFirestore(
     UsersRecord.serializer,
@@ -89,7 +92,8 @@ Map<String, dynamic> createUsersRecordData({
         ..phoneNumber = phoneNumber
         ..userName = userName
         ..bio = bio
-        ..isFollowed = isFollowed,
+        ..isFollowed = isFollowed
+        ..cat = cat,
     ),
   );
 
